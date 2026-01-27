@@ -66,6 +66,6 @@ combined_plot <- (p1 | p2) / (p3 | p4)
 
 
 
-pdf("./Feature.pdf", width = 12, height = 12)
+pdf("Fig4E_Feature.pdf", width = 12, height = 12)
 print(combined_plot)
 dev.off()

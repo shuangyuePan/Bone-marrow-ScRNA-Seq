@@ -21,19 +21,35 @@ This repository contains the computational analysis code for single-cell RNA seq
 Bone-marrow-ScRNA-Seq/
 ├── README.md                    # This file
 ├── monecle/
-│   └── all.R                   # Monocle2 trajectory analysis (Fig 4F, 4G, S9A, S9E)
-├── Fig3F/
-│   └── Arg2_peak_plot.R        # ChIP-seq peak visualization for Arg2 promoter
+│   └── all.R                   # Monocle2 trajectory analysis (Fig 4F, 4G, S6A-C, S10B, S10F)
+├── Fig3B/
+│   └── kegg_plot.R             # KEGG pathway enrichment analysis
+├── Fig3E/
+│   └── plot.R                  # ChIP-seq coverage plotting
 ├── Fig4D/
-│   └── density_plot.R          # Cell density analysis for neutrophil populations
+│   └── density_plot.R          # Cell density analysis for neutrophil populations (Neu+PRE+PMN)
 ├── Fig4E/
 │   └── Feautre_plot.R          # Feature plots for key marker genes
 ├── Fig4H/
 │   └── CellRatio.R             # Cell type proportion analysis
 ├── Fig4I/
 │   └── density_plot.R          # Density analysis for pre-MDSC populations
-└── Fig4J/
-    └── density_plot.R          # Density analysis for PMN-MDSC populations
+├── Fig4J/
+│   └── density_plot.R          # Density analysis for PMN-MDSC populations
+├── FigS4A/
+│   ├── pca.R                   # PCA analysis of samples
+│   └── counts_anno.xls         # Input data for PCA
+├── FigS4C/
+│   ├── volc.R                  # Volcano plot for differential expression (KO vs NC)
+│   └── KO-vs-NC-all.gene.xls   # Input data for Volcano plot
+├── FigS4E/
+│   └── plot.sh                 # ATAC-seq TSS heatmap generation
+├── FigS4F/
+│   └── plot.R                  # ChIP-seq coverage plot for Arg2 TSS
+├── FigS6D/
+│   └── plot.py                 # RNA velocity analysis
+└── FigS10A/
+    └── plot.R                  # Enrichment dotplot (Amine & Polyamine Metabolism)
 ```
 
 ## Key Findings
@@ -65,7 +81,7 @@ Bone-marrow-ScRNA-Seq/
 ```r
 # Core single-cell analysis
 library(Seurat)          # v4.0+
-library(monocle)         # v2.0+
+library(monocle)         # v2
 
 # Data manipulation and visualization
 library(ggplot2)
@@ -89,7 +105,7 @@ library(parallel)
 ## Usage
 
 ### Prerequisites
-1. **R version ≥ 4.0.0**
+1. **Seurat v4**
 2. **Required R packages** (see Dependencies section)
 3. **Input data**: `bm.qs` file containing processed Seurat object
 4. **ChIP-seq data**: BigWig files for ARID1A ChIP-seq (Fig3F only)
@@ -137,30 +153,11 @@ Rscript Feautre_plot.R
 - **Population Comparison**: Fisher's exact test with simulation (B=10,000)
 - **Neighbor Analysis**: Radius-based search (r=2.66) with k-NN validation
 
-## Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@article{author2024arid1a,
-  title={ARID1A regulates myeloid cell differentiation and neutrophil development in bone marrow},
-  author={[Author Names]},
-  journal={[Journal Name]},
-  year={2024},
-  doi={10.xxxx/xxxxxx}
-}
-```
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Contact
-
-For questions about the analysis or code:
-- **Corresponding Author**: [Email]
-- **Computational Analysis**: [Email]
-- **Issues**: Please use the GitHub issue tracker
 
 ## Acknowledgments
 
@@ -170,4 +167,4 @@ For questions about the analysis or code:
 
 ---
 
-**Note**: This repository contains the computational analysis code Only. Raw sequencing data and processed count matrices are available through [Data Repository/GEO Accession].
+**Note**: This repository contains the computational analysis code only. 

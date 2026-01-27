@@ -39,6 +39,6 @@ combined_plot <- prop %>%
   ) 
 
 
-pdf("./cellRatio.pdf", width = 12, height = 12)
+pdf("Fig4H_cellRatio.pdf", width = 12, height = 12)
 print(combined_plot)
 dev.off()

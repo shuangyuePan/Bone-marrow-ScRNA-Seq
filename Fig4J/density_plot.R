@@ -107,8 +107,8 @@ fisher_result <- fisher.test(contingency_table, simulate.p.value = TRUE, B = 100
 print(fisher_result)
 
 # Format p-value
-p_value <- ifelse(fisher_result$p.value < 0.001, "p_val < 0.001", 
-                 sprintf("p_val = %.3f", fisher_result$p.value))
+p_value <- ifelse(fisher_result$p.value < 0.001, "p < 0.001", 
+                 sprintf("p = %.3f", fisher_result$p.value))
 
 # Create annotation data
 annotation_data <- data.frame(
@@ -163,6 +163,6 @@ p_facet <- ggplot() +
 
 
 
-pdf("./Macro_density_plot.pdf", width = 12, height = 6.5)
+pdf("Fig4J_Macro_density_plot.pdf", width = 12, height = 6.5)
 print(p_facet)
 dev.off()

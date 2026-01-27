@@ -142,7 +142,7 @@ cds_neu_m2 <- orderCells(cds_neu_m2, root_state = GM_state(cds_neu_m2, colnames 
 p_state <- plot_cell_trajectory(cds_neu_m2, color_by = "State") +
   scale_color_manual(values = my36colors[5:30]) +
   theme_pubr()
-ggsave("trajectory_state.pdf", p_state, width=10, height=5.5)
+ggsave("Fig4F_trajectory_state.pdf", p_state, width=10, height=5.5)
 
 # 保存细胞类型轨迹图
 p_celltype <- plot_cell_trajectory(cds_neu_m2, color_by = "celltype") +
@@ -178,7 +178,7 @@ p_group_comp <- bm.neu.2@meta.data |>
   scale_y_continuous(labels = scales::percent) +
   labs(y = "% cells") +
   theme_pubr(legend = "right")
-ggsave("group_composition_state.pdf", p_group_comp, width=8, height=6)
+ggsave("Fig4G_group_composition_state.pdf", p_group_comp, width=8, height=6)
 
 # Create a custom bar plot with specific cell counts
 p2 = data.frame( State = c(1:5, 1:5),
@@ -217,8 +217,7 @@ p_hardcoded_group <- data.frame(State = c(1:5, 1:5),
 ggsave("hardcoded_group_composition.pdf", p_hardcoded_group, width=8, height=6)
 
 
-#Fig S9A
-
+#Fig S10B (Branched Heatmap)
 
   gene_list = c('Arg2','Sat1','Picalm','Malat1','Wfdc17','Ifitm1','Srgn','Cebpb','Cstdc4','Dusp1','Stfa2l1',
               'Cd177','Adpgk','Anxa1','Syne1','Lcn2','Aldh2','Serpinb1a','Camp','Ak2','Lyz2','Arhgdib',
@@ -234,14 +233,10 @@ p <- plot_genes_branched_heatmap(cds_neu_m2[gene_list,],
                            return_heatmap = TRUE
                            )
 
-ggsave("branched_heatmap.pdf", p$ph_res, width=6, height=8)
+ggsave("FigS10B_branched_heatmap.pdf", p$ph_res, width=6, height=8)
 
 
-
-
-###  FigS9E 
-
-
+###  FigS10F (Branched Pseudotime)
 
 plot_genes_branched_pseudotime(cds_neu_m2[c("Arg2", "Sat1"),],
                                 branch_point = 1,
@@ -253,7 +248,25 @@ p_pseudotime <- plot_genes_branched_pseudotime(cds_neu_m2[c("Arg2", "Sat1"),],
                                               color_by = "State",
                                               ncol = 1) +
   scale_color_manual(values = my36colors[5:30])
-ggsave("branched_pseudotime.pdf", p_pseudotime, width=10, height=8)
+ggsave("FigS10F_branched_pseudotime.pdf", p_pseudotime, width=10, height=8)
 
 
-                                
+### FigS6
+
+# FigS6A: Elane, Mpo, Prtn3
+p_figs6a <- plot_genes_in_pseudotime(cds_neu_m2[c("Elane","Mpo","Prtn3"),], color_by = "celltype", ncol = 3) +
+  scale_color_manual(values = my36colors[5:30]) +
+  theme_pubr()
+ggsave("FigS6A_Elane_Mpo_Prtn3.pdf", p_figs6a, width=15, height=5)
+
+# FigS6B: Asprv1, Retnlg, Pirb (Added Pirb as requested)
+p_figs6b <- plot_genes_in_pseudotime(cds_neu_m2[c("Asprv1","Retnlg","Pirb"),], color_by = "celltype", ncol = 3) +
+  scale_color_manual(values = my36colors[5:30]) +
+  theme_pubr()
+ggsave("FigS6B_Asprv1_Retnlg_Pirb.pdf", p_figs6b, width=15, height=5)
+
+# FigS6C: Arg2, Cd84, Il1b, Spi1
+p_figs6c <- plot_genes_in_pseudotime(cds_neu_m2[c("Arg2","Cd84","Il1b","Spi1"),], color_by = "celltype", ncol = 4) +
+  scale_color_manual(values = my36colors[5:30]) +
+  theme_pubr()
+ggsave("FigS6C_Arg2_Cd84_Il1b_Spi1.pdf", p_figs6c, width=20, height=5)
