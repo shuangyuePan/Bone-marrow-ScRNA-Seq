@@ -8,7 +8,6 @@ promoter_region <- GRanges(
   ranges = IRanges(start = 67622739, end = 67623450)
 )
 
-# Input files (relative paths from FigS4I directory to Fig3E where BW files are)
 # Assuming BW files are in Fig3E as per previous steps
 ko_bw_path <- "../Fig3E/GSE237222_KO_merged_ratio.bw"
 nc_bw_path <- "../Fig3E/GSE237222_NC_merged_ratio.bw"
@@ -117,6 +116,6 @@ p <- ggplot(combined_data_df, aes(x = start, y = score, color = sample)) +
   theme(axis.text.x = element_blank(), axis.ticks.x = element_line())
 
 # Save output
-output_file <- "FigS4F_ChIP_seq_coverage.pdf"
+output_file <- "FigS4I_ChIP_seq_coverage.pdf"
 ggsave(output_file, plot = p, width = 6, height = 5) # Adjusted size to be more square-like
 print(paste("Plot saved to:", output_file))
