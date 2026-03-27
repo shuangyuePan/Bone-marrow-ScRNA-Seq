@@ -42,7 +42,7 @@ Bone-marrow-ScRNA-Seq/
 ├── FigS4C/
 │   ├── volc.R                  # Volcano plot for differential expression (KO vs NC)
 │   └── KO-vs-NC-all.gene.xls   # Input data for Volcano plot
-├── FigS4E/
+├── Fig3D/
 │   └── plot.sh                 # ATAC-seq TSS heatmap generation
 ├── FigS4F/
 │   └── plot.R                  # ChIP-seq coverage plot for Arg2 TSS
